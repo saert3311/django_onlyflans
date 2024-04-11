@@ -18,4 +18,4 @@ $ cd onlyfans_django/manage.py runserver
 
 ## Avances 
 
-* Creacion de proyecto y configuracion de ambiente de desarrollo
+* Creacion de proyecto y configuracion de ambiente de desarrollo (Hito 1)
