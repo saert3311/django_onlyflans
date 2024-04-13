@@ -7,4 +7,6 @@ app_name = 'frontpage'
 
 urlpatterns = [
     path('', index_view, name='index'),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('bienvenido', welcome_view, name='welcome'),
+    path('acerca', about_view, name='about'),
+]

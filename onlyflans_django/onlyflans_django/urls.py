@@ -20,5 +20,5 @@ from django.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('frontpage.urls', namespace='frontpage')),
+    path('', include('frontpage.urls', namespace='frontpage')), #puedo pasarle el urls de cada app asi no tener esto tan lleno
 ]
