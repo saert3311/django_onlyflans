@@ -1,0 +1,16 @@
+    <div class="container bg-warning">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                  <a class="nav-link{% if request.path == '/' %} active{% endif %}" href="{% url 'frontpage:index' %}">Inicio</a>
+                  <a class="nav-link{% if request.path == '/bienvenido' %} active{% endif %}" href="{% url 'frontpage:welcome' %}">Bienvenido</a>
+                  <a class="nav-link{% if request.path == '/acerca' %} active{% endif %}" href="{% url 'frontpage:about' %}">Acerca</a>
+                </div>
+              </div>
+            </div>
+          </nav>
+    </div>

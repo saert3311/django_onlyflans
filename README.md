@@ -19,3 +19,4 @@ $ cd onlyfans_django/manage.py runserver
 ## Avances 
 
 * Creacion de proyecto y configuracion de ambiente de desarrollo (Hito 1)
+* Creacion de app web, estructura basica de plantillas con bootstrap, 3 vistas enlazadas entre si (Hito 2)
