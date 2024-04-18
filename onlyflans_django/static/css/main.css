@@ -1,3 +1,10 @@
+:root {
+    --blue-one: #639CD9;
+    --blue-two: #5454C5;
+    --darker-blue: #342056;
+    --darkest-blue: #220E24;
+}
+
 body {
     min-height: 100vh;
 }
