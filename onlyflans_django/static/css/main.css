@@ -3,13 +3,20 @@
     --blue-two: #5454C5;
     --darker-blue: #342056;
     --darkest-blue: #220E24;
+    --cake: #F6F5F2;
 }
 
 body {
     min-height: 100vh;
+    background-color: var(--cake);
 }
 
 img.main-logo {
     width: auto;
     height: 4rem;
+}
+
+footer{
+    background-color: var(--darker-blue);
+    color: #fff;
 }
