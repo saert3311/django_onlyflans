@@ -1,6 +1,6 @@
-from django.views.generic import ListView, TemplateView, FormView
+from django.views.generic import ListView, TemplateView, CreateView
 from django.contrib import messages
-from .models import Flan
+from .models import Flan, Contact
 from .forms import ContactForm
 
 #tengo el presentimiento que mas adelante veremos vistas de clases asi que me adelanto un poco para
@@ -53,14 +53,15 @@ class AboutView(TemplateView):
     
 about_view = AboutView.as_view()
 
-class ContactView(FormView):
+class ContactView(CreateView):
     template_name = 'contact.html'
+    model = Contact
     form_class = ContactForm
     success_url = '/'
 
     def form_valid(self, form):
         form.save()
-        messages.success('Mensaje enviado correctamente')
+        messages.add_message(self.request, messages.SUCCESS, "Mensaje Enviado!")
         return super().form_valid(form)
     
     def get_context_data(self, **kwargs):

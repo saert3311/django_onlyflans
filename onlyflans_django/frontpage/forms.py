@@ -1,7 +1,27 @@
-from django import forms
+from django.forms import ModelForm
+from django.forms import Textarea
+from .models import Contact
 
-
-class ContactForm(forms.Form):
-    customer_name = forms.CharField(label='Nombre', max_length=64)
-    customer_email = forms.EmailField(label='Email')
-    customer_message = forms.CharField(label='Mensaje')
+class ContactForm(ModelForm):
+    class Meta:
+        model = Contact
+        fields = '__all__'
+        labels = {
+            'name': 'Nombre',
+            'email': 'Correo',
+            'message': 'Mensaje',
+        }
+        error_messages = {
+            'name': {
+                'required': 'Por favor escribe tu nombre',
+            },
+            'email': {
+                'required': 'Por favor escribe tu correo',
+            },
+            'message': {
+                'required': 'Por favor escribe tu mensaje',
+            },
+        }
+        widgets = {
+            'message': Textarea(attrs={'rows': 5}),
+        }

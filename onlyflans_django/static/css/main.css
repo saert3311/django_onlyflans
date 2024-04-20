@@ -17,15 +17,14 @@ img.main-logo {
     height: 4rem;
 }
 
+.card > img {
+    width: 100%;
+    min-height: 302px;
+    object-fit: cover;
+    background-color: aliceblue;
+}
 footer{
     background-color: var(--darker-blue);
     color: #fff;
     width: 100%;
 }
-
-@media (min-height: 100vh) {
-    footer {
-      position: absolute;
-      bottom: 0;
-    }
-  }
