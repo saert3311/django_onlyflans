@@ -20,3 +20,6 @@ $ cd onlyfans_django/manage.py runserver
 
 * Creacion de proyecto y configuracion de ambiente de desarrollo (Hito 1)
 * Creacion de app web, estructura basica de plantillas con bootstrap, 3 vistas enlazadas entre si (Hito 2)
+![Hito 3](https://r2.trinum.xyz/django-inicio-hito2.png)
+* Creacion de modelo de contacto, vista de contacto y formulario correspondiente para recibir datos y ser guardados en el modelo (Hito 3)
+![Hito 3](https://r2.trinum.xyz/django-form-hito3.png)
