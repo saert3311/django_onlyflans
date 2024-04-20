@@ -1,6 +1,7 @@
-from django.views.generic import ListView
-from django.views.generic import TemplateView
+from django.views.generic import ListView, TemplateView, FormView
+from django.contrib import messages
 from .models import Flan
+from .forms import ContactForm
 
 #tengo el presentimiento que mas adelante veremos vistas de clases asi que me adelanto un poco para
 #no tener que hacer tantos cambios mas adelante y que vamos a ir trabajando sobre el mismo proyecto
@@ -51,3 +52,20 @@ class AboutView(TemplateView):
         return context
     
 about_view = AboutView.as_view()
+
+class ContactView(FormView):
+    template_name = 'contact.html'
+    form_class = ContactForm
+    success_url = '/'
+
+    def form_valid(self, form):
+        form.save()
+        messages.success('Mensaje enviado correctamente')
+        return super().form_valid(form)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page'] = 'Contacto'
+        return context
+    
+contact_view = ContactView.as_view()

@@ -32,3 +32,17 @@ class Flan(models.Model):
 
     def __str__(self):
         return f'{self.pk}: {self.name}'
+    
+
+class Contact(models.Model):
+    name = models.CharField(max_length=64)
+    email = models.EmailField()
+    message = models.TextField()
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
+
+    @property
+    def get_uuid(self):
+        return self.uuid
+
+    def __str__(self):
+        return f'{self.pk}: {self.name}'

@@ -9,6 +9,7 @@
 body {
     min-height: 100vh;
     background-color: var(--cake);
+    position: relative;
 }
 
 img.main-logo {
@@ -19,4 +20,12 @@ img.main-logo {
 footer{
     background-color: var(--darker-blue);
     color: #fff;
+    width: 100%;
 }
+
+@media (min-height: 100vh) {
+    footer {
+      position: absolute;
+      bottom: 0;
+    }
+  }
