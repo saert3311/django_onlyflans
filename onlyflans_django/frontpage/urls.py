@@ -9,4 +9,5 @@ urlpatterns = [
     path('', index_view, name='index'),
     path('bienvenido', welcome_view, name='welcome'),
     path('acerca', about_view, name='about'),
+    path('contacto', contact_view, name='contact'),
 ]

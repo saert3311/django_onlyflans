@@ -1,8 +1,30 @@
+:root {
+    --blue-one: #639CD9;
+    --blue-two: #5454C5;
+    --darker-blue: #342056;
+    --darkest-blue: #220E24;
+    --cake: #F6F5F2;
+}
+
 body {
     min-height: 100vh;
+    background-color: var(--cake);
+    position: relative;
 }
 
 img.main-logo {
     width: auto;
     height: 4rem;
+}
+
+.card > img {
+    width: 100%;
+    min-height: 302px;
+    object-fit: cover;
+    background-color: aliceblue;
+}
+footer{
+    background-color: var(--darker-blue);
+    color: #fff;
+    width: 100%;
 }
