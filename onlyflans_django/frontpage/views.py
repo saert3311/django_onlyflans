@@ -1,7 +1,11 @@
+import re
 from django.views.generic import ListView, TemplateView, CreateView
+from django.contrib.auth.views import LoginView
 from django.contrib import messages
+from django.contrib.auth import authenticate, login
 from .models import Flan, Contact
-from .forms import ContactForm
+from .forms import ContactForm, AuthForm
+from django.shortcuts import redirect
 
 #tengo el presentimiento que mas adelante veremos vistas de clases asi que me adelanto un poco para
 #no tener que hacer tantos cambios mas adelante y que vamos a ir trabajando sobre el mismo proyecto
@@ -70,3 +74,30 @@ class ContactView(CreateView):
         return context
     
 contact_view = ContactView.as_view()
+
+class Login(LoginView):
+    template_name = 'cuenta/login.html'
+    authentication_form = AuthForm
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page'] = 'Login'
+        return context
+
+    def post(self, request, *args, **kwargs):
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                if request.POST.get('remember'):
+                    request.session.set_expiry(0)
+                messages.add_message(self.request, messages.SUCCESS, f'Bienvenido! ${self.request.user.first_name}')
+                return redirect('/')
+            else:
+                messages.add_message(self.request, messages.ERROR, "Cuenta Inactiva!")
+        else:
+            messages.add_message(self.request, messages.ERROR, "Usuario o Contraseña Incorrectos!")
+
+login_view = Login.as_view()
