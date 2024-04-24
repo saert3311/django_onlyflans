@@ -30,6 +30,20 @@ class IndexView(ListView):
     
 index_view = IndexView.as_view()
 
+class ListContacts(LoginRequiredMixin, ListView):
+    template_name = 'list_contacts.html'
+    model = Contact
+    context_object_name = 'contacts'
+    login_url = "/login"
+    redirect_field_name = "redirect_to"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page'] = 'Contactos recibidos'
+        return context
+    
+list_contacts_view = ListContacts.as_view()
+
 class WelcomeView(LoginRequiredMixin, ListView):
     template_name = 'welcome.html' #por ahora usemos la misma plantilla que en index
     model = Flan

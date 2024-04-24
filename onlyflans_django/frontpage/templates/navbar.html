@@ -8,6 +8,7 @@
                 <div class="navbar-nav">
                   <a class="nav-link{% if request.path == '/' %} active{% endif %}" href="{% url 'frontpage:index' %}">Inicio</a>
                   {% if user.is_authenticated %}<a class="nav-link{% if request.path == '/bienvenido' %} active{% endif %}" href="{% url 'frontpage:welcome' %}">Bienvenido</a>{% endif %}
+                  {% if user.is_authenticated %}<a class="nav-link{% if request.path == '/contactos-recibidos' %} active{% endif %}" href="{% url 'frontpage:contacts_received' %}">Contactos Recibidos</a>{% endif %}
                   <a class="nav-link{% if request.path == '/acerca' %} active{% endif %}" href="{% url 'frontpage:about' %}">Acerca</a>
                   <a class="nav-link{% if request.path == '/contacto' %} active{% endif %}" href="{% url 'frontpage:contact' %}">Contacto</a>
                 </div>
