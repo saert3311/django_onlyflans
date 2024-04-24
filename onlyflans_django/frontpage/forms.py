@@ -29,5 +29,5 @@ class ContactForm(ModelForm):
 
 class AuthForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
-        self.error_messages['invalid_login'] = 'Uusario o contraseña incorrectos'
+        self.error_messages['invalid_login'] = 'Usuario o contraseña incorrectos'
         super().__init__(*args, **kwargs)

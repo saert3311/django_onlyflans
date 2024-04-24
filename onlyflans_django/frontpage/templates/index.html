@@ -3,10 +3,25 @@
   {{ page }}
 {% endblock %}
 {% block content %}
-  <section class="container my-4">
+<section class="container my-5">
+  <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+    <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+      <h1 class="display-4 fw-bold lh-1 text-body-emphasis">Quieres Flanes? Tenemos los Flanes mas brutales del mercado</h1>
+      <p class="lead">Estas aburrido de los tipicos flanes de siempre, postres aburridos e insipidos, registrate y prepara tus ojos ante la mas grande flaniosidad que tus ojos tentran el honor de ser testigo, que el mismo Gordon Ramsey se le hace agua la boca</p>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+        <a href="{% url 'frontpage:login' %}"><button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Vamo al flan 🍮</button></a>
+        <a href="#prueba"><button type="button" class="btn btn-outline-secondary btn-lg px-4">Dame a probar</button></a>
+      </div>
+    </div>
+    <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
+        <img class="rounded-lg-3" src="https://r2.trinum.xyz/portada.jpg" alt="" width="450">
+    </div>
+  </div>
+</section>
+  <section class="container my-4" id="prueba">
     <div class="row">
       <div class="col">
-        <h1 class="text-center">{{ page }}</h1>
+        <h3 class="text-center">Una pequeña probadita</h3>
       </div>
     </div>
     <div class="row mt-3">

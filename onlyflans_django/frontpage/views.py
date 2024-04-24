@@ -1,8 +1,9 @@
-import re
 from django.views.generic import ListView, TemplateView, CreateView
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.mixins import LoginRequiredMixin #Heredamos de este tambien para que solo usuarios logueados puedan acceder 
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
+from django.contrib.auth import logout
 from .models import Flan, Contact
 from .forms import ContactForm, AuthForm
 from django.shortcuts import redirect
@@ -29,10 +30,12 @@ class IndexView(ListView):
     
 index_view = IndexView.as_view()
 
-class WelcomeView(ListView):
-    template_name = 'index.html' #por ahora usemos la misma plantilla que en index
+class WelcomeView(LoginRequiredMixin, ListView):
+    template_name = 'welcome.html' #por ahora usemos la misma plantilla que en index
     model = Flan
     context_object_name = 'flans' #nombre con el que se va a pasar la lista de objetos a la plantilla
+    login_url = "/login" #redirigir a esta url si no esta logueado
+    redirect_field_name = "redirect_to"
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -76,7 +79,7 @@ class ContactView(CreateView):
 contact_view = ContactView.as_view()
 
 class Login(LoginView):
-    template_name = 'cuenta/login.html'
+    template_name = 'account/login.html'
     authentication_form = AuthForm
 
     def get_context_data(self, **kwargs):
@@ -96,8 +99,13 @@ class Login(LoginView):
                 messages.add_message(self.request, messages.SUCCESS, f'Bienvenido! ${self.request.user.first_name}')
                 return redirect('/')
             else:
-                messages.add_message(self.request, messages.ERROR, "Cuenta Inactiva!")
+                return super().post(request, *args, **kwargs)
         else:
-            messages.add_message(self.request, messages.ERROR, "Usuario o Contraseña Incorrectos!")
+            return super().post(request, *args, **kwargs)
 
 login_view = Login.as_view()
+
+def logout_view(request):
+    logout(request)
+    messages.add_message(request, messages.SUCCESS, 'Sesion cerrada!')
+    return redirect('/')
