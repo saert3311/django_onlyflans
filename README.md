@@ -23,3 +23,5 @@ $ cd onlyfans_django/manage.py runserver
 ![Hito 3](https://r2.trinum.xyz/django-inicio-hito2.png)
 * Creacion de modelo de contacto, vista de contacto y formulario correspondiente para recibir datos y ser guardados en el modelo (Hito 3)
 ![Hito 3](https://r2.trinum.xyz/django-form-hito3.png)
+* Creacion de vistas de Login para condicionar vistas y personalizacion adicional
+![Hito 3](https://r2.trinum.xyz/hito4.png)
